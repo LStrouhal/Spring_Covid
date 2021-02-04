@@ -2,16 +2,14 @@ package de.neuefische.covidapi.service;
 
 import de.neuefische.covidapi.api.CovidApiCountryStatusData;
 import de.neuefische.covidapi.api.CovidApiService;
-import de.neuefische.covidapi.model.CovidCases;
-import org.hamcrest.Matchers;
+import de.neuefische.covidapi.model.CovidCase;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -32,10 +30,10 @@ class CovidServiceTest {
 
 
         //WHEN
-        Optional<CovidCases> activeCases = covidService.getActiveCases();
+        Optional<List<CovidCase>> activeCases = covidService.getActiveCases();
 
         //THEN
-        assertThat(activeCases.get(), is(new CovidCases("Hamburg", 10, "2021-02-01T13:13:30Z")));
+        assertThat(activeCases.get(), is(new CovidCase("Hamburg", 10, "2021-02-01T13:13:30Z")));
 
     }
 

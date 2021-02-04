@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 
-public class CovidCases {
+public class CovidCase {
 
     private String province;
     private int active;
