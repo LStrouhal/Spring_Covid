@@ -5,11 +5,14 @@ import de.neuefische.covidapi.api.CovidApiService;
 import de.neuefische.covidapi.model.CovidCase;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -27,13 +30,15 @@ class CovidServiceTest {
         };
 
         when(covidApiServiceMock.getCases()).thenReturn(mockedCases);
-
+        ArrayList<CovidCase> expectedArray = new ArrayList<>();
+        expectedArray.add(new CovidCase("Hamburg", 10, "2021-02-01T13:13:30Z"));
 
         //WHEN
         Optional<List<CovidCase>> activeCases = covidService.getActiveCases();
 
         //THEN
-        assertThat(activeCases.get(), is(new CovidCase("Hamburg", 10, "2021-02-01T13:13:30Z")));
+        assertEquals(activeCases.get(),expectedArray);
+
 
     }
 
